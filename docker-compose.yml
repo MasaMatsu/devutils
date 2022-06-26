@@ -1,0 +1,35 @@
+version: '3'
+services:
+  azuresqledge:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: azuresqledge
+    profiles:
+      - all
+      - db
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=azuresqledge@1
+      - MSSQL_PID=Developer
+      - MSSQL_LCID=1041
+      - MSSQL_COLLATION=Japanese_CI_AS
+      - MSSQL_TCP_PORT=1433
+      - MSSQL_BACKUP_DIR=/var/opt/mssql/backup
+      - MSSQL_DATA_DIR=/var/opt/mssql/data
+      - MSSQL_LOG_DIR=/var/opt/mssql/log
+      - MSSQL_LOG_DIR=/var/opt/mssql/dump
+    volumes:
+      - ./azuresqledge/backup:/var/opt/mssql/backup
+      - ./azuresqledge/data:/var/opt/mssql/data
+      - ./azuresqledge/log:/var/opt/mssql/log
+      - ./azuresqledge/dump:/var/opt/mssql/dump
+  redis:
+    image: redis:latest
+    container_name: redis
+    profiles:
+      - all
+      - cache
+    volumes:
+      - ./redis/data:/data
+      - ./redis/redis.conf:/etc/redis.conf

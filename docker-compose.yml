@@ -1,8 +1,8 @@
 version: '3'
 services:
-  azuresqledge:
-    image: mcr.microsoft.com/azure-sql-edge:latest
-    container_name: azuresqledge
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql
     profiles:
       - all
       - db
@@ -10,7 +10,7 @@ services:
       - SYS_PTRACE
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=azuresqledge@1
+      - MSSQL_SA_PASSWORD=sqlserver2022@1
       - MSSQL_PID=Developer
       - MSSQL_LCID=1041
       - MSSQL_COLLATION=Japanese_CI_AS
@@ -20,10 +20,10 @@ services:
       - MSSQL_LOG_DIR=/var/opt/mssql/log
       - MSSQL_LOG_DIR=/var/opt/mssql/dump
     volumes:
-      - ./azuresqledge/backup:/var/opt/mssql/backup
-      - ./azuresqledge/data:/var/opt/mssql/data
-      - ./azuresqledge/log:/var/opt/mssql/log
-      - ./azuresqledge/dump:/var/opt/mssql/dump
+      - ./mssql/backup:/var/opt/mssql/backup
+      - ./mssql/data:/var/opt/mssql/data
+      - ./mssql/log:/var/opt/mssql/log
+      - ./mssql/dump:/var/opt/mssql/dump
   redis:
     image: redis:latest
     container_name: redis

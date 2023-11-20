@@ -8,6 +8,6 @@
 
 ## Execution Variants
 
-* `make web`: Run azuresqledge and redis.
-* `make db`: Run azuresqledge.
+* `make web`: Run mssql and redis.
+* `make db`: Run mssql.
 * `make cache`: Run redis.

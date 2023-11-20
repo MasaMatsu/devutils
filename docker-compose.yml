@@ -2,6 +2,7 @@ version: '3'
 services:
   mssql:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
     container_name: mssql
     profiles:
       - all
@@ -33,3 +34,9 @@ services:
     volumes:
       - ./redis/data:/data
       - ./redis/redis.conf:/etc/redis.conf
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: azurite
+    profiles:
+      - all
+      - blob

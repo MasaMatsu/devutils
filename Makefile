@@ -1,14 +1,11 @@
-all:
-	docker compose --profile all up -d
+init:
+	docker compose --profile aspdotnet up -d
 
-db:
-	docker compose --profile db up -d
-
-cache:
-	docker compose --profile cache up -d
+start:
+	docker compose --profile aspdotnet start
 
 stop:
-	docker compose --profile all stop
+	docker compose --profile aspdotnet stop
 
 down:
-	docker compose --profile all down
+	docker compose --profile aspdotnet down

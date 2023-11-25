@@ -5,8 +5,7 @@ services:
     platform: linux/amd64
     container_name: mssql
     profiles:
-      - all
-      - db
+      - aspdotnet
     cap_add:
       - SYS_PTRACE
     environment:
@@ -27,16 +26,17 @@ services:
       - ./mssql/dump:/var/opt/mssql/dump
   redis:
     image: redis:latest
+    platform: linux/amd64
     container_name: redis
     profiles:
-      - all
-      - cache
+      - aspdotnet
     volumes:
       - ./redis/data:/data
       - ./redis/redis.conf:/etc/redis.conf
   azurite:
-    image: mcr.microsoft.com/azure-storage/azurite
+    image: mcr.microsoft.com/azure-storage/azurite:latest
     container_name: azurite
     profiles:
-      - all
-      - blob
+      - aspdotnet
+    volumes:
+      - ./azurite/data:/data

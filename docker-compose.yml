@@ -6,6 +6,7 @@ services:
     container_name: mssql
     profiles:
       - aspdotnet
+    restart: always
     cap_add:
       - SYS_PTRACE
     environment:
@@ -30,6 +31,7 @@ services:
     container_name: redis
     profiles:
       - aspdotnet
+    restart: always
     volumes:
       - ./redis/data:/data
       - ./redis/redis.conf:/etc/redis.conf
@@ -38,5 +40,6 @@ services:
     container_name: azurite
     profiles:
       - aspdotnet
+    restart: always
     volumes:
       - ./azurite/data:/data

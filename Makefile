@@ -9,3 +9,15 @@ stop:
 
 down:
 	docker compose --profile aspdotnet down
+
+redis-init:
+	docker compose up -d redis
+
+redis-start:
+	docker compose start redis
+
+redis-stop:
+	docker compose stop redis
+
+redis-down:
+	docker compose down redis

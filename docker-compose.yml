@@ -6,8 +6,6 @@ services:
     profiles:
       - aspdotnet
     restart: always
-    cap_add:
-      - SYS_PTRACE
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=sqlserver2025@1

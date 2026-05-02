@@ -1,6 +1,6 @@
 services:
   mssql:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: mcr.microsoft.com/mssql/server:2025-latest
     platform: linux/amd64
     container_name: mssql
     profiles:
@@ -10,8 +10,8 @@ services:
       - SYS_PTRACE
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=sqlserver2022@1
-      - MSSQL_PID=Developer
+      - MSSQL_SA_PASSWORD=sqlserver2025@1
+      - MSSQL_PID=StandardDeveloper
       - MSSQL_LCID=1041
       - MSSQL_COLLATION=Japanese_CI_AS
       - MSSQL_TCP_PORT=1433
@@ -25,7 +25,7 @@ services:
       - ./mssql/log:/var/opt/mssql/log
       - ./mssql/dump:/var/opt/mssql/dump
   redis:
-    image: redis:latest
+    image: redis:8-alpine
     container_name: redis
     profiles:
       - aspdotnet

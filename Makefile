@@ -26,4 +26,4 @@ redis-down:
 	docker compose down redis
 
 redis-down-v:
-	docker compose down redis -v
+	docker compose down -v redis

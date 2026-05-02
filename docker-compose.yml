@@ -18,10 +18,10 @@ services:
       - MSSQL_LOG_DIR=/var/opt/mssql/log
       - MSSQL_DUMP_DIR=/var/opt/mssql/dump
     volumes:
-      - ./mssql/backup:/var/opt/mssql/backup
-      - ./mssql/data:/var/opt/mssql/data
-      - ./mssql/log:/var/opt/mssql/log
-      - ./mssql/dump:/var/opt/mssql/dump
+      - mssql_data:/var/opt/mssql/data
+      - mssql_log:/var/opt/mssql/log
+      - ./data/mssql/backup:/var/opt/mssql/backup
+      - ./data/mssql/dump:/var/opt/mssql/dump
   redis:
     image: redis:8-alpine
     container_name: redis
@@ -29,7 +29,7 @@ services:
       - aspdotnet
     restart: unless-stopped
     volumes:
-      - ./redis/data:/data
+      - ./data/redis/data:/data
   azurite:
     image: mcr.microsoft.com/azure-storage/azurite:latest
     container_name: azurite
@@ -37,4 +37,8 @@ services:
       - aspdotnet
     restart: unless-stopped
     volumes:
-      - ./azurite/data:/data
+      - ./data/azurite/data:/data
+
+volumes:
+  mssql_data:
+  mssql_log:

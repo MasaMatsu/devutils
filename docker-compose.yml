@@ -26,7 +26,6 @@ services:
       - ./mssql/dump:/var/opt/mssql/dump
   redis:
     image: redis:latest
-    platform: linux/amd64
     container_name: redis
     profiles:
       - aspdotnet

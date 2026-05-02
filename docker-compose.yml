@@ -5,7 +5,7 @@ services:
     container_name: mssql
     profiles:
       - aspdotnet
-    restart: always
+    restart: unless-stopped
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=sqlserver2025@1
@@ -27,7 +27,7 @@ services:
     container_name: redis
     profiles:
       - aspdotnet
-    restart: always
+    restart: unless-stopped
     volumes:
       - ./redis/data:/data
   azurite:
@@ -35,6 +35,6 @@ services:
     container_name: azurite
     profiles:
       - aspdotnet
-    restart: always
+    restart: unless-stopped
     volumes:
       - ./azurite/data:/data
